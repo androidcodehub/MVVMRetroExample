@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="item" type="viewmodel.ItemDayViewModel"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/weather_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="#35000000"
+        android:minHeight="72dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/dayName"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@{item.dateDayText}"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/white_100"
+            android:textSize="54sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dayNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingTop="4dp"
+            android:text="@{item.dateDayNumber}"
+            android:textColor="@color/white_100"
+            android:textSize="24sp"
+            app:layout_constraintLeft_toRightOf="@+id/dayName" />
+
+        <TextView
+            android:id="@+id/main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@{item.main}"
+            android:textColor="@color/white_100"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toRightOf="@+id/dayName"
+            app:layout_constraintTop_toBottomOf="@+id/dayNumber" />
+
+        <ImageView
+            android:id="@+id/thermometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_thermometer"
+            android:backgroundTint="@color/white_100"
+            app:layout_constraintTop_toBottomOf="@+id/dayName" />
+
+        <ImageView
+            android:id="@+id/sunRise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ic_sun_horizon"
+            android:backgroundTint="@color/white_100"
+            app:layout_constraintLeft_toRightOf="@+id/thermometer"
+            app:layout_constraintTop_toBottomOf="@+id/dayName" />
+
+        <TextView
+            android:id="@+id/temp_morn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="20dp"
+            android:text="@{item.tempMorn}"
+            android:textColor="@color/white_100"
+            app:layout_constraintLeft_toRightOf="@+id/sunRise"
+            app:layout_constraintTop_toBottomOf="@+id/dayName" />
+
+        <ImageView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_a01d"
+            android:backgroundTint="@color/white_100"
+            app:layout_constraintLeft_toRightOf="@+id/temp_morn"
+            app:layout_constraintTop_toBottomOf="@+id/dayName" />
+
+        <TextView
+            android:id="@+id/temp_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="@{item.tempDay}"
+            android:textColor="@color/white_100"
+            app:layout_constraintBaseline_toBaselineOf="@+id/temp_morn"
+            app:layout_constraintLeft_toRightOf="@+id/day" />
+
+        <ImageView
+            android:id="@+id/eve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_full_moon"
+            android:backgroundTint="@color/white_100"
+            app:layout_constraintLeft_toRightOf="@+id/temp_day"
+            app:layout_constraintTop_toBottomOf="@+id/dayName" />
+
+        <TextView
+            android:id="@+id/temp_eve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="@{item.tempEve}"
+            android:textColor="@color/white_100"
+            app:layout_constraintBaseline_toBaselineOf="@+id/temp_morn"
+            app:layout_constraintLeft_toRightOf="@+id/eve" />
+
+        <ImageView
+            android:id="@+id/night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_a01n"
+            android:backgroundTint="@color/white_100"
+            app:layout_constraintLeft_toRightOf="@+id/temp_eve"
+            app:layout_constraintTop_toBottomOf="@+id/dayName" />
+
+        <TextView
+            android:id="@+id/temp_night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="@{item.tempNight}"
+            android:textColor="@color/white_100"
+            app:layout_constraintBaseline_toBaselineOf="@+id/temp_morn"
+            app:layout_constraintLeft_toRightOf="@+id/night" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@{item.imageUri}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
